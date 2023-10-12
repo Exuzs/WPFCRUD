@@ -1,0 +1,117 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        Title="MainWindow" Height="550" Width="912" Background="#F5F5F5">
+    <Grid RenderTransformOrigin="0.5,0.5" Margin="0,0,-2,0">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.058"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="100*" />
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="51*" />
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.75"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="26.009"/>
+            <ColumnDefinition Width="28"/>
+            <ColumnDefinition Width="97.241"/>
+            <ColumnDefinition Width="58*" />
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="254*" />
+            <ColumnDefinition Width="205"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition Width="7"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Column="2"
+            Grid.ColumnSpan ="5"
+            Text="MANTENIMIENTO USUARIO" 
+            Foreground="#333333"       
+            FontSize="30"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="10,0,0,0" Height="40" Width="372"/>
+        <TextBlock Text="Buscar Usuario"
+                   HorizontalAlignment="Left"
+                   Grid.Column="6"
+                   Grid.Row="2"
+                   FontSize="16"
+                   Foreground="#666666" Width="106" Margin="25,0,0,0"/>
+        <TextBox x:Name="TxBuscar"
+                 Background="Transparent"
+                 BorderBrush="#CCCCCC"
+                 Grid.Column="7"
+                 Grid.Row="2"
+                 VerticalContentAlignment="Center"
+                 Padding="20 0 0 0"
+                 Foreground="#666666"
+                 KeyUp="TxBuscar_KeyUp"/>
+        <Button Grid.Column="8"
+                Grid.Row="2"
+                Background="Transparent"
+                BorderBrush="#333333"
+                Cursor="Hand"
+                Foreground="#333333"
+                Width="100"
+                x:Name="BtnCrearUsurio"
+                HorizontalAlignment="Center"
+                BorderThickness="1"
+                Content="Crear USUARIO"
+                Click="BtnCrearUsuario_Click" Height="25" VerticalAlignment="Center"/>
+        <DataGrid Grid.Row="4"
+                  Grid.Column="2"
+                  Grid.RowSpan="3"
+                  x:Name="GridDatos"
+                  AutoGenerateColumns="False"
+                  Background="#FFFFFF"
+                  Foreground="#333333"
+                  FontSize="15"
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserSortColumns="False"
+                  RowBackground="Transparent"
+                  HeadersVisibility="Column"
+                  VerticalGridLinesBrush="#333333" Grid.ColumnSpan="7" Margin="0,0,8,12">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="1*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="3*"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="3*"/>
+                <DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" Width="2*"/>
+                <DataGridTextColumn Header="Nacionalidad" Binding="{Binding Nacionalidad}" Width="2*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="3*"/>
+                <DataGridTemplateColumn Header="Acciones" Width="4*">
+                    <!-- Aumenta el ancho aquí -->
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Content="Actualizar" Width="80" Margin="5" Click="Actualizar_Click"/>
+                                <Button Content="Eliminar" Width="80" Margin="5" Click="Eliminar_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Frame x:Name="USUARIOS"
+               Grid.Column="0"
+               Grid.Row="0"
+               Grid.RowSpan="9"
+               Grid.ColumnSpan="11" Navigated="USUARIOS_Navigated" Margin="-3,7,-4,2"/>
+    </Grid>
+</Window>
